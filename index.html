@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Template Wizard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Template Wizard</h1>
+    <form action="/" method="POST">
+        <!-- Checkboxes for template parts -->
+        <div id="options">
+            {{ range .Templates }}
+            <label>
+                <input type="checkbox" name="selected" value="{{ .Name }}" {{ if .IsSelected }}checked{{ end }}>
+                {{ .Name }}
+            </label>
+            {{ end }}
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Update</button>
+    </form>
+
+    <!-- Text box for the final message -->
+    <textarea id="output" readonly>{{ .FinalMessage }}</textarea>
+</body>
+</html>

@@ -1,0 +1,7 @@
+[
+    {"Name": "Greeting", "Content": "Hello {{.Name}},", "IsSelected": false},
+    {"Name": "Introduction", "Content": "My name is Hans and I have just been assigned to your case. Thank you for the information you have provided so far.", "IsSelected": false},
+    {"Name": "Request for steps", "Content": "Kindly share the steps to reproduce your issue.", "IsSelected": false},
+    {"Name": "Request for credentials", "Content": "Please open the connection to your internal system and store the appropriate credentials in the Logon Depot as per note ##xxxx.", "IsSelected": false},
+    {"Name": "Closing Signature", "Content": "Kind regards,\nHans\nSAP Support", "IsSelected": false}
+]

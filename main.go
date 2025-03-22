@@ -22,7 +22,7 @@ func main() {
 	// Load templates from default.json
 	templates := loadTemplates("data/default.json")
 
-	// Handle the root route
+	// Handle the root route(main, and single page)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
 			// Parse the form data
@@ -57,7 +57,7 @@ func main() {
 		})
 	})
 
-	// Serve static files (CSS)
+	// Serve CSS file
 	http.Handle("/styles.css", http.FileServer(http.Dir(".")))
 
 	// Start the server

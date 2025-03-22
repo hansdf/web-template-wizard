@@ -1,7 +1,61 @@
 [
-    {"Name": "Greeting", "Content": "Hello {{.Name}},", "IsSelected": false},
-    {"Name": "Introduction", "Content": "My name is Hans and I have just been assigned to your case. Thank you for the information you have provided so far.", "IsSelected": false},
-    {"Name": "Request for steps", "Content": "Kindly share the steps to reproduce your issue.", "IsSelected": false},
-    {"Name": "Request for credentials", "Content": "Please open the connection to your internal system and store the appropriate credentials in the Logon Depot as per note ##xxxx.", "IsSelected": false},
-    {"Name": "Closing Signature", "Content": "Kind regards,\nHans\nSAP Support", "IsSelected": false}
+    {
+        "Name": "Greeting", 
+        "Content": "Hello {{.Name}},", 
+        "IsSelected": false
+    },
+    {
+        "Name": "Introduction", 
+        "Content": "My name is Hans and I have just been assigned to your case. Thank you for the information you have provided so far.", 
+        "IsSelected": false
+    },
+    {
+        "Name": "Request for steps", 
+        "Content": "Kindly share the steps to reproduce your issue.", 
+        "IsSelected": false
+    },
+    {
+        "Name": "Request for credentials", 
+        "Content": "Please open the connection to your internal system and store the appropriate credentials in the Logon Depot as per note ##xxxx.",
+        "IsSelected": false},
+    {
+        "Name": "Consulting Request",
+        "Content": "Please note that the issue you reported is considered a consulting request which is out of scope of what SAP Support can provide.\n\nHence we don’t have the expertise to support you on it, and there’s very limited information in our knowledge base.\n\nConsulting requests like this require effort to evaluate the business process requirements you have and how to best adjust your system to your needs, which needs an SAP consultant to be involved to ensure the best result for your requirements.\n\nYou can find further details in SAP note ##83020 and ##1054121.",
+        "IsSelected": false
+    },
+    {
+        "Name": "Custom Code in Dump",
+        "Content": "I note that the error has occurred in a \"Z\" Program, which is typically custom-made. According to SAP Note ##83020, such analyses fall outside the scope of SAP Support under the maintenance agreement (https://is.gd/V5bAiG / https://is.gd/lcLASE). We can assist you with any errors, bugs, or dumps with standard software or documentation licensed from SAP. I recommend following the instructions from SAP Note ##1054121. Thank you for your understanding.",
+        "IsSelected": false
+    },
+    {
+        "Name": "Call Scheduling",
+        "Content": "Before we proceed with scheduling an online meeting, it would be beneficial if you could provide a detailed written description of the issues you're experiencing. This will allow us to better understand the problems at hand and prepare for a more productive discussion.\n\nOnline meetings are most effective when both parties - you and our SAP team - have a thorough understanding of the topics and issues to be addressed. Entering a meeting without a clear agenda may not yield the best results.\n\nTherefore, we kindly request you to elaborate on the issue: what errors are occurring, the processes leading to these errors, any halted downstream processes, and why you believe these errors are incorrect. This will help us to verify the issues in the system beforehand, ensuring a more efficient meeting.\n\nPlease note that even after our meeting, it's important to document these issues in writing for future reference.\n\nLet's focus on clarifying these issues first before scheduling a call. Once we've reviewed the issues, we can discuss the possibility of an online meeting tomorrow or at a time that suits you best.\n\nThank you for your understanding and cooperation.",
+        "IsSelected": false
+    },
+    {
+        "Name": "F110 Posting Failed",
+        "Content": "You are facing an update termination issue on F110. Posting orders: xx generated, xx completed.\n\nIn such cases in F110 run status, you will have:\nPosting orders: X generated, Y completed\n\ni.e., all the payment documents did not get completed in the payment run.\n\nThis is usually the symptom of a posting/update termination when the system is trying to write back the created doc nr. into the BKPF, BSEG.\n\nYou can see the mentioned document in the tables REGUH, REGUP, but you won't find it in the tables BKPF, BSEG.\n\nFirst, check if you have note ##2246646 - F110: Sporadic update terminations and runtime errors, applied in your system.\nThen, please refer to KBA ##2116298 - F110: Bank file including documents not posted. This document will guide you through the solving of the issue.\n\nWe would like to inform you that such issues 'Update terminations' occur due to some abnormalities.\n\nYou can reverse any F110 postings via RFF110S_REVERSE, and any clearings need to be reversed using FBRA. After this, you can run F110 again.",
+        "IsSelected": false
+    },
+    {
+        "Name": "EOD Proposal",
+        "Content": "The best way to address the issue you have submitted is to handle it as an “Expertise on Demand” (EoD) service delivery, within your Premium Engagement.\n\nDue to the issue you've reported being a consulting issue, I propose to move forward and request an EoD service within your Premium Engagement contract.\n\nPlease confirm that you are in agreement with this EoD service proposal. If so, I will forward your Case to the Expertise on Demand team for further review.",
+        "IsSelected": false
+    },
+    {
+        "Name": "Multiple Issues",
+        "Content": "I can see that you've reported more than one issue in this case.\n\nWe only handle one issue per incident as outlined in note ##50048. Please open another incident to treat the other issues.",
+        "IsSelected": false
+    },
+    {
+        "Name": "Memory Dump Display",
+        "Content": "The issue TSV_TNEW_PAGE_ALLOC_FAILED happens due to a very large amount of selection, caused by a lack of selection criteria.\n\nBased on my initial analysis, I believe that the KBA ##1652034 is relevant for you.\n\nKindly request you to read the resolution part in the KBA. Mainly topic '2.6 Reduce the list output volume by narrowing the selection criteria.'\n\nThis would be the best way, but it requires some analysis of the business purpose of the output and how accountants work with it.\n\nCompany code and the account number are the key fields. Make sure that you are not selecting a huge amount of data, which will, of course, lead to performance issues.\n\nSince the account is a key field for those transactions, you should select a range of accounts when applicable.\n\nAlso, please check below:\n\n- In order to enhance the performance, you can follow the steps provided in the following SAP Note:\n\n##1135916 - Line items: Help for analysis for long runtime\nEspecially, the tab '5. Tips for creating a database index.'\n\n- SAP Wiki - Low performance of FBL1N, FBL3N, and FBL5N: https://wiki.scn.sap.com/wiki/display/ERPFI/Low+performance+of+FBL1N%2C+FBL3N+and+FBL5N",
+        "IsSelected": false
+    },
+    {
+        "Name": "Closing Signature", 
+        "Content": "Kind regards,\nHans\nSAP Support", 
+        "IsSelected": false
+    }
 ]

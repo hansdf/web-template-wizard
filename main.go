@@ -19,18 +19,14 @@ type PageData struct {
 }
 
 func main() {
-	// Load templates from default.json
-	templates := loadTemplates("data/default.json")
+	templates := loadTemplates("data/default.json") // Load templates from default.json
 
-	// Handle the root route(main, and single page)
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { // Handle the root route(main, and single page)
 		if r.Method == http.MethodPost {
-			// Parse the form data
 			r.ParseForm()
 			selectedTemplates := r.Form["selected"]
 
-			// Update the IsSelected field for each template
-			for i := range templates {
+			for i := range templates { // Update the IsSelected field for each template
 				templates[i].IsSelected = false
 				for _, selected := range selectedTemplates {
 					if templates[i].Name == selected {
@@ -41,27 +37,23 @@ func main() {
 			}
 		}
 
-		// Generate the final message
 		finalMessage := ""
-		for _, template := range templates {
+		for _, template := range templates { // Generate the final message
 			if template.IsSelected {
 				finalMessage += template.Content + "\n\n"
 			}
 		}
 
-		// Render the HTML template
-		tmpl := template.Must(template.ParseFiles("index.html"))
+		tmpl := template.Must(template.ParseFiles("index.html")) // Render the HTML template
 		tmpl.Execute(w, PageData{
 			Templates:    templates,
 			FinalMessage: finalMessage,
 		})
 	})
 
-	// Serve CSS file
-	http.Handle("/styles.css", http.FileServer(http.Dir(".")))
+	http.Handle("/styles.css", http.FileServer(http.Dir("."))) // Serve CSS file
 
-	// Start the server
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", nil) // Start the server
 }
 
 func loadTemplates(filename string) []Template {

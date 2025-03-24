@@ -8,6 +8,7 @@ To-dos:
  - Add the copy to clipboard functionality similar to the CLI version.
  - Dynamically alter the names in greetings and closing signature without having to manually go into the JSON file.
  - Adding/modifying templates support???
+ - Scroll bar for the template list
 
 
 ## Dockerfile

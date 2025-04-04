@@ -12,31 +12,29 @@ body {
     padding: 20px;
 }
 
-/* Container "box" for the content */
 #app {
-    max-width: 1400px; /* Wider container for two columns */
+    max-width: 1400px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex; /* Use Flexbox for two columns */
+    display: flex; /* Flexbox for two columns */
     gap: 20px; /* Space between columns */
 }
 
-/* Left Column: Checkbox Options */
+/* Left Column */
 #options {
     flex: 1; /* Take up 1 part of the available space */
-    padding-right: 20px; /* Add some spacing between columns */
+    padding-right: 20px; 
     border-right: 1px solid #ddd; /* Visual separation */
 }
 
-/* Right Column: Textarea for Final Message */
+/* Right Column */
 #output-container {
-    flex: 1; /* Take up 1 part of the available space */
+    flex: 1; 
 }
 
-/* Heading */
 h1 {
     font-size: 2rem;
     color: #444;
@@ -44,7 +42,6 @@ h1 {
     text-align: center;
 }
 
-/* Checkbox Options */
 label {
     display: block;
     margin: 10px 0;
@@ -65,7 +62,6 @@ input[type="checkbox"] {
     accent-color: #6c757d;
 }
 
-/* Update Button */
 button {
     display: block;
     width: 100%;
@@ -83,7 +79,6 @@ button:hover {
     background-color: #5a6268;
 }
 
-/* Textarea for Final Message */
 textarea {
     width: 100%;
     height: 800px;
@@ -93,7 +88,7 @@ textarea {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9rem;
     background-color: #f9f9f9;
-    resize: vertical; /* Allow vertical resizing */
+    resize: vertical;
 }
 
 textarea:focus {

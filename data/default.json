@@ -1,7 +1,7 @@
 [
     {
         "Name": "Greeting", 
-        "Content": "Hello {{.Name}},", 
+        "Content": "Hello Team,", 
         "IsSelected": false
     },
     {
@@ -10,8 +10,8 @@
         "IsSelected": false
     },
     {
-        "Name": "Request for steps", 
-        "Content": "Kindly share the steps to reproduce your issue.", 
+        "Name": "Request for steps",
+        "Content": "In order to properly analyze your issue, please assist me with the following points:\n\n1. For security reasons, confirm the System ID that I should use to reproduce the issue. (Sometimes it is not the same system used to open the case);\n\n2. Open the connection to your internal system;\n\n3. Ensure there are valid credentials maintained in Logon Data as per SAP Note ##1773689;\n\n4. Provide a file with steps to reproduce the issue with as much information as possible, showing the complete steps (with menu paths and input data, or variant) to recreate the issue in your system.",
         "IsSelected": false
     },
     {

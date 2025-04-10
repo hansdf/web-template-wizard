@@ -23,7 +23,19 @@
         <!-- Right Column -->
         <div id="output-container">
             <textarea id="output" readonly>{{ .FinalMessage }}</textarea>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>      
         </div>
     </div>
+
+    <!-- I think a minimal javascript inline is the easiest approach to this? -->
+    <script>
+        function copyToClipboard() {
+            const textarea = document.getElementById("output");
+            textarea.select(); 
+            document.execCommand("copy");
+
+            alert("Copied to clipboard!");
+        }
+    </script>
 </body>
 </html>

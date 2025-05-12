@@ -16,6 +16,8 @@ To-dos:
 
 ## Dockerfile
 
+Github Actions process to push dockerhub img implemented
+
 ```docker build -t template-wizard .```
 
 ```docker run -p 8080:8080 template-wizard```

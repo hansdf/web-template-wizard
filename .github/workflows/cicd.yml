@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}hansdf/template-wizard:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/template-wizard:latest

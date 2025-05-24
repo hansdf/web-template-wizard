@@ -51,7 +51,7 @@ func main() {
 		})
 	})
 
-	http.Handle("/styles.css", http.FileServer(http.Dir("."))) // Serve CSS file
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	http.ListenAndServe(":8080", nil) // Start the server
 }

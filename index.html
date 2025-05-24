@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Template Wizard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+    <button id="dark-mode">🌙</button>
+    
     <div id="app">
         <!-- Left Column -->
         <div id="options">
@@ -27,15 +29,6 @@
         </div>
     </div>
 
-    <!-- I think a minimal javascript inline is the easiest approach to this? -->
-    <script>
-        function copyToClipboard() {
-            const textarea = document.getElementById("output");
-            textarea.select(); 
-            document.execCommand("copy");
-
-            alert("Copied to clipboard!");
-        }
-    </script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

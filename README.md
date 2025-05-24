@@ -13,9 +13,10 @@ To-dos:
  - Scroll bar for the template list
  - Dark mode
 
-
 ## Dockerfile
 
 ```docker build -t template-wizard .```
 
 ```docker run -p 8080:8080 template-wizard```
+
+There is a GitHub Actions workflow to automate building and pushing a Docker image to Docker Hub whenever code is pushed to the main branch.

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Users</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <div id="app">
+        <div id="options">
+            <h1>User Management</h1>
+            <a href="/">Back</a>
+            <a href="/admin/users/new">Create User</a>
+            <table style="width:100%; margin-top:16px; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:6px;">ID</th>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:6px;">Email</th>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:6px;">Admin</th>
+                        <th style="text-align:left; border-bottom:1px solid #ddd; padding:6px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .Users }}
+                    <tr>
+                        <td style="padding:6px;">{{ .ID }}</td>
+                        <td style="padding:6px;">{{ .Email }}</td>
+                        <td style="padding:6px;">{{ if .IsAdmin }}Yes{{ else }}No{{ end }}</td>
+                        <td style="padding:6px; display:flex; gap:8px;">
+                            <form method="POST" action="/admin/users/toggle-admin">
+                                <input type="hidden" name="id" value="{{ .ID }}" />
+                                <button type="submit">Toggle Admin</button>
+                            </form>
+                            <form method="POST" action="/admin/users/reset-password">
+                                <input type="hidden" name="id" value="{{ .ID }}" />
+                                <input type="password" name="new_password" placeholder="New password" required />
+                                <button type="submit">Reset Password</button>
+                            </form>
+                            <form method="POST" action="/admin/users/delete" onsubmit="return confirm('Delete user {{ .Email }}?');">
+                                <input type="hidden" name="id" value="{{ .ID }}" />
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+        <div id="output-container">
+            <p>Admins can create, delete, reset passwords, and toggle admin status here.</p>
+        </div>
+    </div>
+</body>
+</html>
+

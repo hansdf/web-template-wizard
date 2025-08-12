@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create User</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        .container{max-width:520px;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+        input{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:4px}
+        .error{color:#b00020;margin-bottom:10px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create User</h2>
+        {{ if .Error }}<div class="error">{{ .Error }}</div>{{ end }}
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+                <input type="checkbox" name="is_admin" /> Admin
+            </label>
+            <button type="submit">Create</button>
+            <a href="/admin/users" style="margin-left:8px;">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
+

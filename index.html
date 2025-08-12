@@ -6,11 +6,20 @@
 </head>
 <body>
     <button id="dark-mode">🌙</button>
+    <div style="position:absolute; top:20px; right:60px; display:flex; gap:8px;">
+        <form action="/templates" method="GET" style="display:inline;">
+            <button type="submit">Manage Templates</button>
+        </form>
+        <form action="/logout" method="GET" style="display:inline;">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
     
     <div id="app">
         <!-- Left Column -->
         <div id="options">
             <h1>Template Wizard</h1>
+            
             <form action="/" method="POST">
                 {{ range .Templates }}
                 <label>

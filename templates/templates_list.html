@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Templates</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="app">
+        <div id="options">
+            <h1>Templates for {{ .Email }}</h1>
+            <a href="/">Back to Builder</a>
+            <a href="/templates/new">New Template</a>
+            <a href="/logout" style="float:right">Logout</a>
+            <ul style="margin-top:15px; list-style:none; padding:0;">
+                {{ range .Templates }}
+                <li style="margin:8px 0; display:flex; justify-content:space-between; gap:8px; align-items:center;">
+                    <span>{{ .Name }}</span>
+                    <span>
+                        <a href="/templates/edit?id={{ .ID }}">Edit</a>
+                        <form method="POST" action="/templates/delete" style="display:inline">
+                            <input type="hidden" name="id" value="{{ .ID }}" />
+                            <button type="submit">Delete</button>
+                        </form>
+                    </span>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        <div id="output-container">
+            <p>Manage your personal templates here.</p>
+        </div>
+    </div>
+</body>
+</html>
+

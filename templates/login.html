@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Template Wizard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .container{max-width:420px;margin:40px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+        .error{color:#b00020;margin-bottom:10px}
+        input{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:4px}
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="no-referrer" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        {{ if .Error }}<div class="error">{{ .Error }}</div>{{ end }}
+        <form method="POST" action="/login">
+            <input type="text" name="user_id" placeholder="User ID" required autocomplete="username" />
+            <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+            <button type="submit">Sign in</button>
+        </form>
+    </div>
+</body>
+</html>
+

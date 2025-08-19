@@ -18,17 +18,17 @@ body.dark-mode {
     color: #f0f0f0;
 }
 
+/* Updated #app to be a single-column, centered container */
 #app {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 40px auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 20px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: block; /* Changed from flex */
     position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-mode #app {
@@ -36,20 +36,15 @@ body.dark-mode #app {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Removed border and padding from the main content container */
 #options {
-    flex: 1;
-    padding-right: 20px;
-    border-right: 1px solid #ddd;
+    padding-right: 0;
+    border-right: none;
 }
 
-body.dark-mode #options {
-    border-right-color: #444;
-}
-
+/* Removed styles for the now-deleted right column */
 #output-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: none;
 }
 
 h1 {
@@ -96,18 +91,21 @@ input[type="checkbox"] {
 }
 
 button {
-    padding: 10px;
+    padding: 10px 16px;
     background-color: #6c757d;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 button:hover {
     background-color: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 form button[type="submit"] {
@@ -115,10 +113,28 @@ form button[type="submit"] {
     margin-top: 20px;
 }
 
-#dark-mode {
+/* New container for top-right buttons */
+.top-right-nav {
     position: absolute;
     top: 20px;
     right: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center; /* Vertically aligns buttons */
+}
+
+.top-right-nav form {
+    margin: 0;
+}
+
+.top-right-nav form button {
+    width: auto;
+    margin-top: 0;
+}
+
+/* Removed absolute positioning from dark mode button */
+#dark-mode {
+    position: static;
     padding: 8px 12px;
     font-size: 0.9rem;
 }
@@ -148,4 +164,267 @@ textarea:focus {
     outline: none;
     border-color: #6c757d;
     box-shadow: 0 0 5px rgba(108, 117, 125, 0.3);
+}
+
+/* Template Management Styles - UPDATED */
+.template-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+body.dark-mode .template-item {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+.template-item:hover {
+    background-color: #f1f1f1;
+    border-color: #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .template-item:hover {
+    background-color: #3d3d3d;
+    border-color: #555;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.template-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s ease;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body.dark-mode .template-name {
+    color: #f0f0f0;
+}
+
+.template-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* FIX for delete button layout */
+.template-actions .delete-form {
+    margin: 0; /* Resets browser default form margin */
+}
+
+.template-actions .delete-form button[type="submit"] {
+    width: auto; /* Overrides the generic 100% width */
+    margin-top: 0; /* Resets the generic margin */
+}
+
+.action-link {
+    text-decoration: none;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Updated button colors to grey */
+.btn-edit {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+body.dark-mode .empty-state {
+    color: #aaa;
+}
+
+/* Button Improvements */
+/* Updated button colors to grey */
+.btn-create-new {
+    width: 100%;
+    background-color: #6c757d;
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+.btn-create-new:hover {
+    background-color: #5a6268 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Template Form Styles (Unchanged) */
+.template-form {
+    margin-top: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s ease;
+}
+body.dark-mode .form-group label {
+    color: #f0f0f0;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #333;
+}
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #f0f0f0;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+.form-group input {
+    height: 48px;
+}
+.form-group textarea {
+    min-height: 300px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    align-items: center;
+}
+.btn-save {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    flex: 1;
+}
+.btn-save:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+.btn-cancel {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 100px;
+}
+.btn-cancel:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    #app {
+        padding: 15px;
+        margin: 10px auto;
+    }
+    .form-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+    
+    /* Updated responsive styles for the new template item */
+    .template-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .template-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    
+    .template-actions .action-link,
+    .template-actions .delete-form {
+        flex: 1;
+    }
+
+    .template-actions .btn-edit,
+    .template-actions .btn-delete {
+        width: 100%;
+    }
 }

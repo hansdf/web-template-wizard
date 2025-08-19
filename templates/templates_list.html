@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Templates</title>
+    <title>Manage Templates - Template Wizard</title>
     <link rel="stylesheet" href="/static/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
 </head>
 <body>
-    <div id="app">
+    <!-- Updated navigation container -->
+    <div class="top-right-nav">
+        <form action="/" method="GET">
+            <button type="submit">Back to Builder</button>
+        </form>
+        <form action="/logout" method="GET">
+            <button type="submit">Logout</button>
+        </form>
+        <button id="dark-mode">🌙</button>
+    </div>
+    
+    <!-- The main container is now a single column -->
+    <div id="app" class="single-column-container">
         <div id="options">
-            <h1>Templates for {{ .Email }}</h1>
-            <a href="/">Back to Builder</a>
-            <a href="/templates/new">New Template</a>
-            <a href="/logout" style="float:right">Logout</a>
-            <ul style="margin-top:15px; list-style:none; padding:0;">
-                {{ range .Templates }}
-                <li style="margin:8px 0; display:flex; justify-content:space-between; gap:8px; align-items:center;">
-                    <span>{{ .Name }}</span>
-                    <span>
-                        <a href="/templates/edit?id={{ .ID }}">Edit</a>
-                        <form method="POST" action="/templates/delete" style="display:inline">
-                            <input type="hidden" name="id" value="{{ .ID }}" />
-                            <button type="submit">Delete</button>
-                        </form>
-                    </span>
-                </li>
+            <h1>Manage Templates</h1>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Templates for <strong>{{ .Username }}</strong></p>
+            
+            <div style="margin-bottom: 20px;">
+                <a href="/templates/new" style="text-decoration: none;">
+                    <button type="button" class="btn-create-new">
+                        ➕ Create New Template
+                    </button>
+                </a>
+            </div>
+            
+            <div id="templates-list">
+                {{ if .Templates }}
+                    {{ range .Templates }}
+                    <!-- Each template is now a single row with name and actions -->
+                    <div class="template-item">
+                        <span class="template-name">{{ .Name }}</span>
+                        <div class="template-actions">
+                            <a href="/templates/edit?id={{ .ID }}" class="action-link">
+                                <button type="button" class="btn-edit">✏️ Edit</button>
+                            </a>
+                            <form action="/templates/delete" method="POST" class="delete-form">
+                                <input type="hidden" name="id" value="{{ .ID }}">
+                                <button type="submit" class="btn-delete">🗑️ Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    {{ end }}
+                {{ else }}
+                    <div class="empty-state">
+                        <p style="text-align: center; color: #666; margin: 20px 0;">
+                            No templates yet. Create your first template to get started!
+                        </p>
+                    </div>
                 {{ end }}
-            </ul>
-        </div>
-        <div id="output-container">
-            <p>Manage your personal templates here.</p>
+            </div>
         </div>
     </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
-

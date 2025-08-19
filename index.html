@@ -5,14 +5,15 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <button id="dark-mode">🌙</button>
-    <div style="position:absolute; top:20px; right:60px; display:flex; gap:8px;">
-        <form action="/templates" method="GET" style="display:inline;">
+    <!-- Updated navigation container -->
+    <div class="top-right-nav">
+        <form action="/templates" method="GET">
             <button type="submit">Manage Templates</button>
         </form>
-        <form action="/logout" method="GET" style="display:inline;">
+        <form action="/logout" method="GET">
             <button type="submit">Logout</button>
         </form>
+        <button id="dark-mode">🌙</button>
     </div>
     
     <div id="app">

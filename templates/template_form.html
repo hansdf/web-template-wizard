@@ -1,29 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ .Action }} Template</title>
+    <title>{{ .Action }} Template - Template Wizard</title>
     <link rel="stylesheet" href="/static/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-    <style>
-        .container{max-width:840px;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-        input, textarea { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:4px; }
-        textarea{ min-height:300px; font-family: 'Courier New', Courier, monospace; }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>{{ .Action }} Template</h2>
-        <form method="POST">
-            {{ if .Template.ID }}<input type="hidden" name="id" value="{{ .Template.ID }}" />{{ end }}
-            <label>Name</label>
-            <input type="text" name="name" value="{{ .Template.Name }}" required />
-            <label>Content</label>
-            <textarea name="content" required>{{ .Template.Content }}</textarea>
-            <button type="submit">Save</button>
-            <a href="/templates">Cancel</a>
+    <button id="dark-mode">🌙</button>
+    <div style="position:absolute; top:20px; right:60px; display:flex; gap:8px;">
+        <form action="/templates" method="GET" style="display:inline;">
+            <button type="submit">Back to Templates</button>
+        </form>
+        <form action="/logout" method="GET" style="display:inline;">
+            <button type="submit">Logout</button>
         </form>
     </div>
+    
+    <div id="app">
+        <!-- Left Column -->
+        <div id="options">
+            <h1>{{ .Action }} Template</h1>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">
+                {{ if eq .Action "Create" }}
+                    Create a new template for your collection
+                {{ else }}
+                    Update your existing template
+                {{ end }}
+            </p>
+            
+            <form method="POST" class="template-form">
+                {{ if .Template.ID }}
+                    <input type="hidden" name="id" value="{{ .Template.ID }}" />
+                {{ end }}
+                
+                <div class="form-group">
+                    <label for="template-name">Template Name</label>
+                    <input 
+                        type="text" 
+                        id="template-name"
+                        name="name" 
+                        value="{{ .Template.Name }}" 
+                        placeholder="Enter template name..."
+                        required 
+                    />
+                </div>
+                
+                <div class="form-group">
+                    <label for="template-content">Template Content</label>
+                    <textarea 
+                        id="template-content"
+                        name="content" 
+                        placeholder="Enter your template content here..."
+                        required
+                    >{{ .Template.Content }}</textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">
+                        💾 {{ if eq .Action "Create" }}Create Template{{ else }}Update Template{{ end }}
+                    </button>
+                    <a href="/templates" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right Column -->
+        <div id="output-container">
+            <div class="info-panel">
+                <h2>Template Guidelines</h2>
+                <p>Follow these best practices when creating templates:</p>
+                <ul style="margin: 20px 0; padding-left: 20px;">
+                    <li><strong>Clear Names:</strong> Use descriptive names that explain the template's purpose</li>
+                    <li><strong>Structured Content:</strong> Organize content with proper formatting and sections</li>
+                    <li><strong>Reusable Elements:</strong> Include placeholders or variables where appropriate</li>
+                    <li><strong>Consistent Style:</strong> Maintain consistent formatting throughout</li>
+                </ul>
+                <p><strong>Tip:</strong> You can use markdown formatting in your templates for better organization.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
 

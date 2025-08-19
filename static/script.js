@@ -7,6 +7,23 @@ function copyToClipboard() {
     alert("Copied to clipboard!");
 }
 
+function deleteTemplate(templateId) {
+    if (confirm('Are you sure you want to delete this template?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/templates/delete';
+        
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.value = templateId;
+        
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+
 function switchDarkMode() {
     document.body.classList.toggle("dark-mode");
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));

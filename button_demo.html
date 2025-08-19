@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Layout Demo - Template Wizard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        #app {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+        }
+
+        #options {
+            flex: 1;
+            padding-right: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #444;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .template-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .template-item:hover {
+            background-color: #f1f1f1;
+            border-color: #ccc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-info {
+            flex: 1;
+        }
+
+        .template-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 4px 0;
+        }
+
+        .template-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .template-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            width: 200px;
+        }
+
+        .action-link {
+            text-decoration: none;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+        }
+
+        .info-panel {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .info-panel h2 {
+            color: #444;
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+        }
+
+        .info-panel p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .info-panel ul li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .template-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .template-actions {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+            }
+            
+            .btn-edit, .btn-delete {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Left Column -->
+        <div id="options">
+            <h1>Button Layout Demo</h1>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Showing the improved button layout</p>
+            
+            <div id="templates-list">
+                <div class="template-item">
+                    <div class="template-info">
+                        <h3 class="template-name">Greeting Template</h3>
+                        <p class="template-meta">Created: Aug 18, 2025</p>
+                    </div>
+                    <div class="template-actions">
+                        <a href="#" class="action-link">
+                            <button type="button" class="btn-edit">✏️ Edit</button>
+                        </a>
+                        <button type="button" class="btn-delete" onclick="alert('Delete clicked!')">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="template-item">
+                    <div class="template-info">
+                        <h3 class="template-name">Introduction Template</h3>
+                        <p class="template-meta">Created: Aug 18, 2025</p>
+                    </div>
+                    <div class="template-actions">
+                        <a href="#" class="action-link">
+                            <button type="button" class="btn-edit">✏️ Edit</button>
+                        </a>
+                        <button type="button" class="btn-delete" onclick="alert('Delete clicked!')">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="template-item">
+                    <div class="template-info">
+                        <h3 class="template-name">Request for Steps Template</h3>
+                        <p class="template-meta">Created: Aug 18, 2025</p>
+                    </div>
+                    <div class="template-actions">
+                        <a href="#" class="action-link">
+                            <button type="button" class="btn-edit">✏️ Edit</button>
+                        </a>
+                        <button type="button" class="btn-delete" onclick="alert('Delete clicked!')">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="template-item">
+                    <div class="template-info">
+                        <h3 class="template-name">Request for Credentials Template</h3>
+                        <p class="template-meta">Created: Aug 18, 2025</p>
+                    </div>
+                    <div class="template-actions">
+                        <a href="#" class="action-link">
+                            <button type="button" class="btn-edit">✏️ Edit</button>
+                        </a>
+                        <button type="button" class="btn-delete" onclick="alert('Delete clicked!')">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div id="output-container">
+            <div class="info-panel">
+                <h2>Button Layout Changes</h2>
+                <p>Here's what we improved in the templates page:</p>
+                <ul style="margin: 20px 0; padding-left: 20px;">
+                    <li><strong>Same Line:</strong> Edit and Delete buttons now appear on the same line</li>
+                    <li><strong>Equal Width:</strong> Each button takes exactly 50% of the available space</li>
+                    <li><strong>Better Spacing:</strong> Consistent 8px gap between buttons</li>
+                    <li><strong>Responsive:</strong> Layout adapts well to mobile devices</li>
+                </ul>
+                <p><strong>Before:</strong> Buttons were stacked vertically with different widths</p>
+                <p><strong>After:</strong> Buttons are side-by-side with equal sizing</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

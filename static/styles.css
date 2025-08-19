@@ -18,32 +18,58 @@ body.dark-mode {
     color: #f0f0f0;
 }
 
-/* Updated #app to be a single-column, centered container */
+/* Default #app style for two-column layout (home page) */
 #app {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 40px auto;
     background-color: #fff;
-    padding: 20px 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: block; /* Changed from flex */
-    position: relative;
+    display: flex;
+    gap: 20px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
+
+/* Specific style for the single-column layout on the templates page */
+#app.single-column-container {
+    max-width: 800px;
+    display: block;
+    padding: 20px 30px;
+}
+
 
 body.dark-mode #app {
     background-color: #1e1e1e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Removed border and padding from the main content container */
 #options {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+}
+
+/* Remove border only on the single-column page */
+#app.single-column-container #options {
     padding-right: 0;
     border-right: none;
 }
 
-/* Removed styles for the now-deleted right column */
+
+body.dark-mode #options {
+    border-right-color: #444;
+}
+
 #output-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hide output container only on the single-column page */
+#app.single-column-container #output-container {
     display: none;
 }
 
@@ -395,6 +421,11 @@ body.dark-mode .form-group textarea:focus {
     #app {
         padding: 15px;
         margin: 10px auto;
+        flex-direction: column; /* Stack columns on mobile for home page */
+    }
+    #options {
+        border-right: none;
+        padding-right: 0;
     }
     .form-actions {
         flex-direction: column;
